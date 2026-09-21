@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FUNKCJE - podstawy</title>
+    <script>
+        // Po co są funkcje?
+        // Co to są funkcje?
+
+        // - zbiór instrukcji ukrytych/zamknietych pod jedną nazwą
+        // - funkcja może pobierać argumenty i zwracać !jedną! wartość
+        // - można użyć potrzebnej funkcji, nie trzeba znać jej budowy
+
+        // Tworzenie funkcji.
+
+        /*
+
+        Definicja funkcji: 
+
+        function nazwa_funkcji(ewentualne parametru, ..., ...){
+        zbiór
+        instrukcji
+        ...
+        
+        /może zwracać wartość/
+        return zwracana_wartość;
+        }
+
+        */
+
+
+        // 1) bezparametrowa i bez zwracania wartości
+
+        // definicja funkcji 
+        function przedstawSie(){
+            document.write('<hr>');
+            document.write('Imię i nazwisko ');
+            document.write('uczeń klasy ... ');
+            document.write('<hr>');
+        }
+
+        // żeby funkcja zaczęła działać trzeba ją wywołać
+        przedstawSie();
+
+
+        // jaki typ danych ma funkcja?
+        document.write('Typ danych funkcji przedstawSie: ' + typeof(przedstawSie)); // typ 'function'
+
+        // inny sposób tworzenia funkcji:
+
+        // 2) z parametrem i bez zwracania wartości
+
+        const przedstawSie2 = function(imie, nazwisko, klasa){
+            document.write('<hr>');
+            document.write(imie + ' ' + nazwisko + '<br>');
+            document.write('uczeń klasy ' + klasa + '<br>');
+            document.write('<hr>');
+        }
+
+        przedstawSie2('Jan', 'Nowak', '4F');
+
+
+        // ćw.1 Napisz funkcję o nazwie prostokat(a,b),
+        // która oblicza i prezentuje pole i obwód prostokąta 
+        // z wartości boków podanych do parametrów:
+        /*
+        Treść komunikatu:
+
+        "Prostokąt o wymiarach a=?, b=? ma pole ? oraz obwód ?."
+        */
+
+        function prostokat(a, b) {
+            if (typeof(a) != "number" || typeof(b) != "number" || a <= 0 || b <= 0) {
+                document.write('Wprowadzono błędne dane');
+                document.write('<hr>');
+                return;
+            }
+
+            let pole = a*b;
+            let obwod = (2*a) + (2*b);
+
+
+            document.write(`Prostokąt o wymiarach a=${a}, b=${b} ma pole ${pole} oraz obwód ${obwod}. <br>`);
+            document.write('<hr>');
+        }
+
+        prostokat(-1, 5);
+
+
+        function prostopadloscian(a, b, c) {
+            if (typeof(a) != "number" || typeof(b) != "number" || a <= 0 || b <= 0 || c <= 0) {
+                document.write('Wprowadzono błędne dane');
+                document.write('<hr>');
+                return;
+            }
+
+            let polecalkowite = (2*a*b) + (2*b*c) + (2*a*c);
+            let obwod = 4 * (a+b+c);
+            let objetosc = (a*b*c);
+            
+
+            document.write(`Prostopadłościan o wymiarach a=${a}, b=${b}, c=${c} ma pole całkowite ${polecalkowite}, obwód ${obwod} oraz objetosc ${objetosc}.`);
+            document.write('<hr>');
+        }
+
+        prostopadloscian(5, 5, 5);
+
+        // PRACA DOMOWA
+
+        /*
+        ćw. 2
+        To samo tylko dla koła.
+        "Koło o promieniu r=? ma pole ? oraz obwód ?."
+        */
+
+        function kolo(r) {
+            if (typeof(r) != "number" || r <= 0) {
+                document.write('Wprowadzono błędne dane');
+                document.write('<hr>');
+                return;
+            }
+
+            let pole = Math.PI * (r ** 2);
+            let obwod = 2 * Math.PI * r;
+
+            document.write(`Koło o promieniu r=${r} ma pole ${pole} oraz obwód ${obwod}.`);
+            document.write('<hr>');
+        } 
+
+        kolo(5);
+
+
+        // 3) z parametrami i ze zwracaniem wartości
+
+        function poleKola(r) {
+            const pole = Math.PI * (r ** 2);
+            return pole;
+        }
+
+        let pole = poleKola(10);
+        let kula = 4/3 * pole * 10;
+        let walec = pole * 15;  // pole * H
+
+        document.write(`Pole koła wynosi: ${pole.toFixed(2)}, objętość kuli wynosi: ${kula.toFixed(2)}, objętość walca wynosi: ${walec.toFixed(2)} <br>`);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

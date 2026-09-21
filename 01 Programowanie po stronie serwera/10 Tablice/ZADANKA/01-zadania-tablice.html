@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>TABLICE - zadania</title>
+    <script>
+        // ZAD. 1
+
+        let kolory = ['czerwony', 'pomaranczowy', 'zolty', 'zielony', 'rozowy'];
+        kolory.push('szary');
+        kolory.shift()
+        console.log(kolory);
+
+
+
+        // ZAD. 2
+
+        let liczby =  [10, 20, 30, 40, 50];
+        let suma = 0;
+
+        for (let liczba of liczby) {
+            suma += liczba;    
+        }
+
+        console.log(suma);
+
+
+
+        // ZAD. 3
+
+        let dniTygodnia = ["Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek"];
+
+        dniTygodnia[dniTygodnia.indexOf('Czwartek')] = 'Weekend';
+        console.log(dniTygodnia);
+
+
+
+        // ZAD. 4
+
+        let tab1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+        console.log(
+            tab1.filter(
+                wartosc => wartosc % 2 === 0
+            )
+        );
+
+
+
+        // ZAD. 5
+
+        let tab2 = [1, 2, 3, 4, 5];
+
+        let tab3 = tab2.map(
+            wartosc => wartosc * 3
+        );
+
+        console.log(tab3);
+
+
+
+        // ZAD. 6
+
+        let owoce =  ["jabłko", "banan", "gruszka", "śliwka"];
+
+        console.log(
+            owoce.find(
+                (owoc) => owoc[0] === 'g'
+            )
+        );
+
+
+
+        // ZAD. 7
+
+        let filmy = ['the wall', 'whiplash', 'negocjator'];
+
+        filmy.forEach(film => console.log('Film: ' + film));
+
+
+
+        // ZAD. 8
+
+        let owoce2 =  ["jabłko", "banan", "jabłko", "gruszka", "banan", "banan"];
+
+        let wynik = {
+            jabłko: 0,
+            banan: 0,
+            gruszka: 0,
+        };
+
+        for (let owoc of owoce2) {
+            if (owoc === 'jabłko') {
+                wynik.jabłko += 1;
+            } else if (owoc === 'banan') {
+                wynik.banan += 1;
+            } else if (owoc === 'gruszka') {
+                wynik.gruszka += 1;
+            }
+        }
+
+        console.log(wynik);
+
+
+
+        // ZAD. 9 
+
+        let tab4 = [3, 8, 1, 6, 2, 5];
+
+        console.log(
+            tab4.sort(
+                (a, b) => a - b
+            )
+        );
+
+
+
+        // ZAD. 10
+
+        let tab5 = [1, 2, 3, 2, 4, 1, 5];
+
+        let tab5Unique = [...new Set(tab5)];
+
+        console.log(tab5Unique);
+
+
+
+        // ZAD. 11
+
+        let zwierzeta1 =  ["pies", "kot"];
+        let zwierzeta2 = ["papuga", "chomik"];
+
+        let zwierzeta3 = zwierzeta1.concat(zwierzeta2);
+
+        console.log(zwierzeta3);
+
+
+
+        // ZAD. 12
+
+        function liczbyDoN(n) {
+            let tablica = [];
+
+            for (let i = 1; i <= n; i++) {
+                tablica.push(i);
+            }
+
+            return tablica;
+        }
+
+        console.log(liczbyDoN(13));
+
+
+
+        // ZAD. 13
+
+        let miesiace = ['styczen', 'luty', 'marzec', 'kwiecien', 'maj', 'czerwiec', 'lipiec', 'sierpien', 'wrzesien'];
+
+        let miesiaceLetnie = miesiace.slice(5, 8);
+
+        console.log(miesiaceLetnie);
+
+
+
+        // ZAD. 14
+
+        let tab6 =  ["k", "a", "j", "a", "k"];
+
+        function czyPalindrom(napis) {
+            for (let i = 1; i <= ((napis.length) / 2); i += 1) {
+                if (napis[i-1] != napis[napis.length - i]) {
+                    return false;
+                }
+            }
+            
+            return true;
+        }
+
+        console.log(czyPalindrom(tab6));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

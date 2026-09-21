@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>TABLICE - podstawy</title>
+    <script>
+        // okna dialogowe
+
+        // alert('JS działa!');
+
+        // ------------------------------------------------------------
+
+        // let wiek = prompt('Ile masz lat?', 18);
+
+        // if (wiek === null) {
+        //     document.write('Nie podano wieku');
+        // } else {
+        //     document.write('Twój wiek: ' + wiek);
+        // }
+
+        // ------------------------------------------------------------
+
+        // let zgoda = confirm('Czy wyrażasz zgodę...?');  // confirm zwraca true albo false
+
+        // sprawdzanie typu zmiennej
+        // document.write('jaki typ wartości jest w zmiennej zgoda: ' + (typeof zgoda));
+
+        // if (zgoda) {
+        //     document.write('ok');
+        // } else {
+        //     document.write('nie ok');
+        // }
+
+        // ------------------------------------------------------------
+
+        /*
+        Tablice są to struktury danych pozwalające na przechowywanie 
+        uporządkowanego zbioru elementów (pod jedną nazwą kilka wartości).
+        
+        Tablice w języku JavaScript są obiektami - oprócz elementów z wartościami mają 
+        jeszcze jedno pole/atrybut (length), które przechowuje  informację 
+        o liczbie elementów w tablicy.
+        
+        Poszczególne pola danych nazywamy wtedy komórkami/elementami, a każda komórka/element 
+        ma identyfikujący ją indeks. Pierwsza komórka/element 
+        ma indeks 0, druga — indeks 1, trzecia — indeks 2 itd. 
+        (elementy tablic są indeksowane od 0)
+        */
+
+        // ------------------------------------------------------------
+
+        // Tworzenie tablic
+
+        let tab0 = new Array();
+
+        let tab1 = new Array('napis', true, 12.3);
+
+        console.log('typ tab1: ' + (typeof tab1));
+
+        // warning - komunikat w konsoli z ostrzeżeniem
+        console.warn('Czy tab1 jest tablicą? ' + ( Array.isArray(tab1) ));
+
+        // komunikat z bledem 
+        console.error('ile tab1 ma elementow: ' + tab1.length)
+
+        if (Array.isArray(tab1)) {
+            console.warn('tak, to tablica');
+        }
+
+        
+        let tab2 = [1, 2, 3]; 
+
+        document.write(`Tablica tab2: ${tab2} <br>`);
+        document.write(`Czy to jest tablica: ${Array.isArray(tab2)} <br>`);
+        document.write(`Długość tab2: ${tab2.length}<br>`);
+
+        document.write('<hr>');
+        
+        // to nie jest sposób na tablicę:
+
+        let obj1 = {};
+
+        document.write(`Typ obj1: ${typeof obj1}<br>`);
+        document.write(`Czy to jest tablica: ${Array.isArray(obj1)} <br>`);
+        document.write(`Długość obj1: ${obj1.length}<br>`); // błąd !!!
+
+        document.write('<hr>');
+
+        // ------------------------------------------------------------
+
+        // dodawanie elementów do tablicy
+
+        let tab3 = [];
+
+        tab3[0] = 'jabłko';
+        tab3[1] = 'cytryna';
+        tab3[2] = 'malina';
+
+        document.write(`Rozmiar tab3: ${tab3.length}<br>`);
+
+        let wart3 = tab3[2];
+        document.write(`Wartość 3 elementu tablicy tab3: ${wart3}<br>`);
+
+
+        // wylistowanie zawartości tablicy 
+
+        // .forEach()
+        tab3.forEach(element => document.write(element + ', '));
+        document.write('<hr>');
+
+        tab3.forEach((element, index) => document.write(`index: ${index}; element: ${element}<br>`));
+        document.write('<hr>');
+
+        // for in loop daje nam kolejne indexy
+        for (let i in tab3) {
+            document.write(tab3[i]+'<br>');
+        }
+
+        document.write('<hr>');
+
+        // for of loop zwraca od razu elementy, nie indexy
+        for (let element of tab3) {
+            document.write(element+"<br>");
+        }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

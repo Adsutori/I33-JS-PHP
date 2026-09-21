@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>TABLICE - metody</title>
+    <script>
+        let tab = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+
+        // pole length - rozmiar tablicy
+        document.write(`rozmiar tablicy: ${tab.length}<hr>`);
+
+        // .push() dodaje element/y na końcu listy
+        tab.push(123, 3, 2);
+        document.write(tab + '<hr>');
+
+        // .unshift() dodaje element/y na początku listy
+        tab.unshift(123, 3, 2);
+        document.write(tab + '<hr>');
+
+        // PRZECHODZENIE DO 'DOKUMENTACJI' - klikamy na .unshift() z ctrl
+
+        // .pop() usuwa ostatni element listy
+        tab.pop();
+        document.write(tab + '<hr>');
+
+        // .shift() usuwa pierwszy element listy
+        tab.shift();
+        document.write(tab + '<hr>');
+
+        // ŁĄCZENIE TABLIC
+
+        let tab2 = [1, 2, 3, 4];
+        document.write(tab2 + "<hr>");
+
+        let tab3 = tab.concat(tab2);
+        document.write(tab3 + "<hr>");
+
+        // tablice można łączyć też plusem (+)
+
+        
+
+        // KOPIOWANIE/POBIERANIE FRAGMENTU Z TABLIC:
+
+        // slice() - tworzy kopię listy lub jej fragmentu
+
+        let tab5 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+
+        // let tab6 = tab5.slice();    // kopia całej tablicy
+        let tab6 = tab5.slice(3, 5);    // od indexu do indexu (3, 5>
+
+        document.write(tab6 + "<hr>");
+
+        // splice() - operujemy na oryginalnej tablicy, nie dostajemy jej kopii jak w przypadku slice. do tego działa tak, że w przypadku np. splice(3, 2) on usunie 2 elementy od indexu 3
+
+        tab5.splice(3, 2);  // usuwa 2 elementy z tej listy od indexu 3
+        document.write(tab5 + "<hr>");
+
+        tab5 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+
+        document.write(tab5 + "<hr>");
+
+        // za pomocą splice() można też dostawiać elementy:
+
+        tab5.splice(1, 0, 'jeden', 'dwa', 3, 4);    // nie usuwamy nic i dostawiamy 4 elementy: 'jeden', 'dwa', 3 oraz 4
+
+        document.write(tab5 + "<hr>");
+
+        tab5 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+
+        // usuwanie z dostawianiem elementów za pomocą splice() - zastępowani:
+
+        tab5.splice(1, 2, 'B', 'C');
+
+        document.write(tab5 + "<hr>");  // a,B,C,d,e,f,g,h,i,j
+        
+
+
+        // mapowanie - map()
+        // tworzy tablicę na podstawie innej tablicy, modyfikując wszystkie jej wartości
+
+        let tab7 = [3, 4, 5, 6];
+
+        let tab8 = tab7.map(
+            element => element * 2
+        );
+
+        document.write(tab8 + '<hr>');
+
+
+
+        // filtrowanie - filter()
+        // zostają tylko te elementy które spełniają warunek
+
+        let tab9 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+        let tab10 = tab9.filter(
+            wartosc => wartosc > 4 && wartosc < 8
+        );
+
+        document.write(tab9 + "<hr>");
+        document.write(tab10 + "<hr>");
+
+        let parzyste = tab9.filter(
+            wartosc => wartosc % 2 === 0
+        )
+
+        document.write(parzyste + "<hr>");
+
+
+
+        // reduce() - redukcja
+        // funkcja ta daje nam jedną wartość na podstawie tablicy
+
+        let suma = tab9.reduce(     // zwraca sumę liczb w tab9
+            (akumulator, wartosc) => akumulator + wartosc, 0 
+            // to 0 jest wartoscią początkową akumulatora
+        );
+
+        //akumulator to taki jakby pojemnik do ktorej sa doliczane kolejne wartosci z tablicy. potem ten akumulator jest zwracany.
+
+        document.write(suma + '<hr>');  // 55
+
+
+
+        // jak zrobić silnię:
+
+        let silnia10 = tab9.reduce( (aku, wart) => aku * wart, 1);
+
+        document.write('Silnia z 10 jest równa: ' + silnia10 + '<hr>');
+
+        
+
+        // sort() - sortowanie po lancuchach 
+
+        let tab11 = [100, 20, 40, 300];
+
+        let poSortowaniu = tab11.sort();
+
+        document.write(poSortowaniu + '<hr>');  // 100,20,300,40
+
+
+        // sortowanie po liczbach:
+
+        poSortowaniu = tab11.sort( (a, b) => a - b);
+        document.write(poSortowaniu + '<hr>');
+
+        poSortowaniu = tab11.sort( (a, b) => b - a);
+        document.write(poSortowaniu + '<hr>');
+
+        
+
+        // indexOf() - zwraca pierwsze wystąpienie danego elementu
+
+        document.write(tab9.indexOf(3) + '<hr>'); // 2
+        document.write(tab9.indexOf('x'));   // -1
+    </script>   
+</head>
+<body>
+    
+</body>
+</html>
