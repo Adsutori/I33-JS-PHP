@@ -135,13 +135,87 @@
         function poleKola(r) {
             const pole = Math.PI * (r ** 2);
             return pole;
+            // tu moze byc tylko jeden return
+            // return oznacza zwroc wartosc i zakoncz funkcje
+            // czasem return sluzy tylko do konczenia funkcji
         }
 
         let pole = poleKola(10);
         let kula = 4/3 * pole * 10;
         let walec = pole * 15;  // pole * H
 
-        document.write(`Pole koła wynosi: ${pole.toFixed(2)}, objętość kuli wynosi: ${kula.toFixed(2)}, objętość walca wynosi: ${walec.toFixed(2)} <br>`);
+        document.write(`Pole koła wynosi: ${pole.toFixed(2)}, objętość kuli wynosi: ${kula.toFixed(2)}, objętość walca wynosi: ${walec.toFixed(2)} <hr>`);
+
+
+        // ZADANIE
+        // funkcja zwraca tablicę w wartościami pole i obwodu koła
+
+        function kolo3(r){
+        const pole = Math.PI * Math.pow(r, 2);
+        const obwod = 2 * Math.PI * r;
+        let tab = []; // odpowiedzi umieścimy w tablicy
+        tab[0] = pole;
+        tab[1] = obwod;
+        tab[2] = r;
+        return tab;
+        }
+
+        const tabOdpoKolo = kolo3(10);
+        console.log(tabOdpoKolo);
+        console.log(`Iloe elementów ma tabOdpKolo: ${tabOdpoKolo.length}`);
+        
+        document.write(`Kolo o promieniu r=${tabOdpoKolo[2]} ma pole ${tabOdpoKolo[0].toFixed(2)} i obwód ${tabOdpoKolo[1].toFixed(2)}. <hr>`);
+
+
+
+        function kolo4(r) {
+            const pole = Math.PI * Math.pow(r, 2);
+            const obwod = 2 * Math.PI * r;
+            
+            const obj = {
+                pole: pole,
+                obwod: obwod,
+                r: r
+            }
+
+            return obj;
+        }
+
+        const odjOdp = kolo4(10);
+        console.log(odjOdp);
+        document.write(`Kolo o promieniu r=${odjOdp.r} ma pole ${odjOdp.pole.toFixed(2)} i obwód ${odjOdp.obwod.toFixed(2)}. <hr>`);
+
+
+
+        // Ćw.1 (return)
+        //Napisz funkcję, która przyjmuje współrzędne punktów A i B 
+        // (x1,y1,x2,y2) 
+        //oraz zwraca odległość tych punktów.
+        // (google -> odległość dwóch punktów -> )
+
+        function odleglosc(A, B) {
+            return Math.sqrt(((B.x - A.x) ** 2) + ((B.y - A.y) ** 2)).toFixed(2);
+        }
+
+        document.write(`Punkt A(2, 3) i punkt B(6, 6) są w odległości ${odleglosc({x: 2, y: 3}, {x: 6, y: 6})} <hr>`);     // 5
+
+
+
+        // Ćw.2 (return)
+        // Napisz funkcję, która oblicza pole i obwód pierścienia i zwraca te wartości
+        // w postaci tablicy. Wywołaj funkcję wyświetl dane w ładnych komunikacie.
+
+        function pierscien(R, r) {
+            return [
+                (Math.PI * (R**2 - r**2)),
+                (2 * Math.PI * (R + r))
+            ];
+        }
+
+        let R = 10;
+        let r = 5;
+
+        document.write(`Pole pierścienia o R = ${R} oraz r = ${r} wynosi ${pierscien(R, r)[0].toFixed(2)}, a jego obwód wynosi ${pierscien(R, r)[1].toFixed(2)}`);
     </script>
 </head>
 <body>
