@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FUNKCJE - anonimowe</title>
+    <script>
+        // normalna funkcja
+        function przywitaj() {
+            document.write('Witam Panią/Pana<hr>');
+        }
+
+        przywitaj();
+
+
+        // funkcja anonimowa - tak sie tego nie pisze, to niedozwolone ze składnią jeśli napiszemy ją tak na sucho:
+        
+        // function() {
+        //     document.write('Witam Panią/Pana<hr>');
+        // }
+
+        // można ją przypisać np do jakiejś zmiennej
+
+        const funkcja1 = function() {
+            document.write('Witam Panią/Pana<hr>');
+        }
+
+        funkcja1();
+
+
+        // Funkcja anonimowa jako argument innej funkcji
+
+        let tablica = [1, 2, 3, 4, 5];
+        
+        let suma = tablica.reduce(
+            function(a, e) {
+                return a + e;
+            }   // można tu ofc strzałkową dać i jest szybciej
+        );
+
+        document.write(suma);
+
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

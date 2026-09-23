@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FUNKCJE - podstawy</title>
+    <script>
+        // parametry domyślne (ostatnie, te z prawej strony)
+        function powitaj(imie = 'nieznajomy') {
+            document.write('Witaj, ' + imie + '<hr>');
+        }
+
+        powitaj();
+        powitaj('Krzysiek');
+
+        function funkcja2(a, b, c='dla c', d='dla d') {
+            document.write(a + "<hr>");
+            document.write(b + "<hr>");
+            document.write(c + "<hr>");
+            document.write(d + "<hr>");
+            document.write('<br>');
+        }
+
+        funkcja2(2, 2);
+        funkcja2(4, 5, 6, 7);
+        funkcja2(1);    // zle, bo parametr II nie ma wartosci domyslnej, pokaze sie undefined
+
+        // można pominąć domyślne parametry 'w środku'
+        // stosując undefined
+
+        funkcja2(1, 2, undefined, 4);
+        
+        funkcja2(undefined, 2, 3, 4);
+
+
+
+
+
+        // Tworzenie funkcji przyjmującej nieokreśloną ilość argumentów
+        
+        // A. Parametry/argumenty funkcji obierane za pomocą tablicy arguments[]
+        
+        // Przykład I   (stara metoda, niezbyt wydajna)
+
+        function funkcja3() {
+            const iloscArgumentow = arguments.length;
+            document.write(`Z iloma argumentami wywołano funkcję: ${iloscArgumentow}<hr>`);
+
+            // dostęp do argumentów
+            for (let element of arguments) {
+                document.write(element + ', ');
+            }
+            document.write('<hr>');
+        }
+
+        funkcja3(1, 2, 3, 4, 5);    // 5
+
+        
+        
+        // Ćw. 1. Napisz funkcję suma(), która pobiera nieokreśloną ilość
+        // argumentów różnego typu i oblicza sumę tylko z tych,
+        // które są liczbowe. Funkcje ZWRACA wartość sumy.
+        // Wywołaj tę funkcję tak aby wynik być widoczny na ekranie.
+
+        function suma() {
+            let suma = 0;
+            for (let e of arguments) {
+                if (!isNaN(e) && typeof(e) !== "boolean") {
+                    suma += e;
+                }
+            }
+
+            return suma;
+        }
+
+        document.write(suma(5, '12asfasf', 'asdasd', 5, true) + '<hr>');
+
+        // to 'arguments' jest domyślne
+
+
+
+        // Ćw. 2
+        // Napisz funkcję sredniaArytmetyczna(), która przyjmuje nieokreśloną ilość argumentów,
+        // które muszą być liczbami (bez zabezpieczanie/programista musi poprawnie użyć tej funkcji),
+        // oblicza średnią i wyświetla wynik.
+
+        function sredniaArytmetyczna() {
+            let numbers = [];
+            for (let e of arguments) {
+                if (typeof(e) === "number") {
+                    numbers.push(e);
+                }
+            }
+            return numbers.reduce((sum, value) => sum + value, 0) / numbers.length;
+        }
+
+        document.write(sredniaArytmetyczna('sigma', 1, 2, 3) + '<hr>');
+
+
+        // II. sposób - operator rest (...rest), bardziej nowoczesny sposób
+        /*
+        Operator rest (...rest) w JavaScript pozwala funkcji przyjmować dowolną liczbę argumentów i 
+        grupować je w jedną tablicę. Jest to szczególnie przydatne, gdy nie wiadomo z góry, ile 
+        argumentów zostanie przekazanych do funkcji, lub gdy chcemy pracować z dynamiczną liczbą 
+        danych wejściowych.  
+        */
+
+        function funkcja4(...parametry) {
+            document.write(`czym jest zmienna parametry: ${typeof(parametry)} <hr>`);
+            document.write(`ile argumentów: ${parametry.length}<hr>`);
+            parametry.forEach(
+                element => document.write(`${element}, `)
+            );
+            document.write('<hr>');
+        }
+
+        funkcja4(1, 2, 3, 4);
+
+        // Ćw. 4 - funkcja liczy iloczyn z argumentów
+
+        function iloczyn(...czynniki) {
+            return czynniki.reduce((iloczyn, czynnik) => iloczyn * czynnik, 1);
+        }
+
+        document.write(iloczyn(1, 2, 3, 4) + "<hr>");   // 24
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
