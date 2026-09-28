@@ -14,6 +14,26 @@
 
         const funkcja3 = (a, b) => a + b;
         document.write(funkcja3(10, 5)+'<hr>');
+
+        const funkcja4 = (...parametry) => parametry + '<hr>';
+        document.write(funkcja4(1, 2, 3, 4, 5));
+
+        const funkcja5 = liczba => {
+            liczba++
+            let liczba2 = liczba * 2;
+            let liczba3 = liczba2 *3;
+        }
+        let wartosc = funkcja5(3);
+        document.write(wartosc + "<hr>"); // undefined (nie mamy returna, a return musi byc jesli dajemy klamry)
+
+        const funkcja6 = liczba => {
+            liczba++;
+            let liczba2 = liczba * 2;
+            let liczba3 = liczba2 *3;
+            return liczba3;
+        }
+        let wartosc2 = funkcja6(3);
+        document.write(wartosc2 + "<hr>"); // 24
     </script>
 </head>
 <body>

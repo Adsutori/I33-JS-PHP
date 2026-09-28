@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FUNKCJE - strzałkowa</title>
+    <script defer>
+        // ZAD. 1
+        const greet = imie => `Hello, ${imie} <hr>`;
+        document.write(greet('Krzysiek'));
+
+        // ZAD. 2
+        const fortyTwo = () => 42;
+        document.write(fortyTwo() + "<hr>");
+
+        // ZAD. 3
+        const multiply = (a, b) => a * b;
+        document.write(multiply(2, 3) + "<hr>");
+
+        // ZAD.4
+        const tablica = [1, 2, 3, 4, 5, 6];
+        const tablica2 = tablica.filter(num => num % 2 === 0);
+        document.write(tablica2 + "<hr>");
+
+        // ZAD. 5
+        const tab = [1, 2, 3, 4];
+        const tab2 = tab.map(num => num ** 2);
+        document.write(tab2 + "<hr>");
+
+        // ZAD. 6
+        const czyParzysta = liczba => {
+            if (liczba % 2 === 0) {
+                return 'parzysta';
+            } else {
+                return "nieparzysta";
+            }
+        }
+        document.write(czyParzysta(5) + "<hr>");
+        document.write(czyParzysta(10) + "<hr>");
+
+        // ZAD. 8
+        let person = {
+            name: 'Krzysiek',
+            age: '18'
+        }
+        const displayPerson = (obj) => `name: ${obj.name}, Age: ${obj.age}`;
+        document.write(displayPerson(person) + '<hr>');
+
+        // ZAD. 7
+        
+        let counter = {
+            result: document.getElementById('result'),
+            count: 0,
+            increment() {
+                setInterval(() => {
+                    this.count++;
+                    result.innerHTML = this.count;
+                }, 1000);
+            }
+        }
+
+        counter.increment();
+    </script>
+</head>
+<body>
+    <p id="result"></p>
+</body>
+</html>
