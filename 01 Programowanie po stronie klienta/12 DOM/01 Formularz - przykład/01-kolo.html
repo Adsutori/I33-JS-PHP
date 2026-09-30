@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM</title>
+</head>
+<body>
+    <form>
+        <label>
+            Promień koła (r): <input id="number" type="number">
+        </label>
+        <input id="button" type="button" value="Oblicz pole i obwód">
+    </form>
+    <p id="result"></p>
+
+    <script async>
+        function oblicz() {
+            let pole = Math.PI*(parseInt(number.value)**2);
+            let obwod = 2*Math.PI*(parseInt(number.value));
+
+            result.innerHTML = `Pole: ${pole.toFixed(2)} <br> Obwód: ${obwod.toFixed(2)}`;
+        }
+        
+        let number = document.getElementById('number');
+        let button = document.getElementById('button');
+        let result = document.getElementById('result');
+
+        button.addEventListener('click', oblicz);
+    </script>
+</body>
+</html>

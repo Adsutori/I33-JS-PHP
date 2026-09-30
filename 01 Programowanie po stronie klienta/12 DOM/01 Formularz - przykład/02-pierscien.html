@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM</title>
+</head>
+<body>
+    <form>
+        <label>
+            Promień zewnętrzny (R): <input id="promienZewnetrzny" type="number">
+        </label><br><br>
+        <label>
+            Promień wewnętrzny (r): <input id="promienWewnetrzny" type="number">
+        </label>
+        <input id="button" type="button" value="Oblicz pole i obwód">
+    </form>
+
+    <p id="result"></p>
+
+    <script async>
+        let promienZewnetrzny = document.getElementById('promienZewnetrzny');
+        let promienWewnetrzny = document.getElementById('promienWewnetrzny');
+        let button = document.getElementById('button');
+        let result = document.getElementById('result');
+
+        button.addEventListener('click', function() {
+            const R = Number(promienZewnetrzny.value);
+            const r = Number(promienWewnetrzny.value);
+
+            const pole = Math.PI * (R**2 - r**2);
+            const obwod = 2 * Math.PI * (R + r);
+
+            result.innerHTML = `Pierścień o promieniu zewnętrznym ${R} i promieniu wewnętrznym ${r} ma pole ${pole.toFixed(2)} oraz obwód ${obwod.toFixed(2)}.`
+        });
+    </script>
+</body>
+</html>
