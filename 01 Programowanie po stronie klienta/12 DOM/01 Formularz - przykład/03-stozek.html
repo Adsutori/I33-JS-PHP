@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DOM</title>
+    <style>
+        body {
+            background-color: rgb(51, 51, 51);
+            color: white;
+            font-family: sans-serif;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <form method="post">
+        <label>
+            Promień podstawy stożka
+            <input id="promien" type="number">
+        </label>
+        <br><br>
+        <label>
+            Wysokość stożka
+            <input id="wysokosc" type="number">
+        </label>
+        <br><br>
+        <label>
+            Wybór obliczeń
+            <select id="wybor">
+                <option value='kod0' selected disabled>Wybierz opcję</option>
+
+                <option value='kodL'>L - tworząca</option>
+                <option value='kodPp'>Pp - pole podstawy</option>
+                <option value='kodPB'>PB - pole boczne</option>
+                <option value='kodPc'>Pc - pole całkowite</option>
+                <option value='kodV'>V - objętość</option>
+            </select>
+        </label>
+        <br><br>
+        <input id='oblicz' type="button" value="oblicz">
+    </form>
+
+    <p id="odp"></p>
+
+    <img src="stozek_wzory.png" alt="Stożek wzory" style="width: 100%; margin-top: 50px;">
+
+    <script async>
+        function licz () {
+            const oblicz = document.getElementById('oblicz');
+            
+            const promienDostep = document.getElementById('promien');
+            const wysokoscDostep = document.getElementById('wysokosc');
+            const wyborDostep = document.getElementById('wybor');
+
+            const r = Number(promienDostep.value);
+            const h = Number(wysokoscDostep.value);
+            const wybor = wyborDostep.value;
+
+            console.log(`r: ${r}`);
+            console.log(`h: ${h}`);
+
+            let komunikatObliczen;
+
+            switch (wybor) {
+                case 'kod0':
+                    komunikatObliczen = 'Musisz dokonać wyboru';
+                    break;
+                case 'kodL':
+                    const L = Math.sqrt(r ** 2 + h ** 2);
+                    komunikatObliczen = `Tworząca stożka: ${L.toFixed(2)}`;
+                    break;
+                case 'kodPp':
+                    const Pp = Math.PI * (r ** 2);
+                    komunikatObliczen = `Pole podstawy stożka: ${Pp.toFixed(2)}`;
+                    break;
+                case 'kodPB':
+                    const PB = Math.PI * r * Math.sqrt(r ** 2 + h ** 2);
+                    komunikatObliczen = `Pole boczne stożka: ${PB.toFixed(2)}`;
+                    break;
+                case 'kodPc':
+                    const Pc = Math.PI * r * (r + Math.sqrt(r ** 2 + h ** 2));
+                    komunikatObliczen = `Pole całkowite stożka: ${Pc.toFixed(2)}`;
+                    break;
+                case 'kodV':
+                    const V = (Math.PI / 3) * r ** 2 * h;
+                    komunikatObliczen = `Objętość stożka: ${V.toFixed(2)}`;
+                    break;
+            }
+
+            document.getElementById('odp').innerHTML = komunikatObliczen;
+        }
+        
+        oblicz.addEventListener('click', licz);
+    </script>
+</body>
+
+</html>

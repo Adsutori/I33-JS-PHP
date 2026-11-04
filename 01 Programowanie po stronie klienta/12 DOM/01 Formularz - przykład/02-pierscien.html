@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>DOM</title>
 </head>
+
 <body>
     <form>
         <label>
@@ -23,15 +25,16 @@
         let button = document.getElementById('button');
         let result = document.getElementById('result');
 
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             const R = Number(promienZewnetrzny.value);
             const r = Number(promienWewnetrzny.value);
 
-            const pole = Math.PI * (R**2 - r**2);
+            const pole = Math.PI * (R ** 2 - r ** 2);
             const obwod = 2 * Math.PI * (R + r);
 
             result.innerHTML = `Pierścień o promieniu zewnętrznym ${R} i promieniu wewnętrznym ${r} ma pole ${pole.toFixed(2)} oraz obwód ${obwod.toFixed(2)}.`
         });
     </script>
 </body>
+
 </html>
