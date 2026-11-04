@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FUNKCJE - strzałkowa</title>
+    <script defer>
+        // ZAD. 1
+        function wizytowka(imie, nazwisko, klasa) {
+            document.write(imie + ' ' + nazwisko + ' ' + klasa + '<hr>');
+        }
+
+        wizytowka('Krzysztof', 'Januszewski', '4F');
+
+        // ZAD. 2
+        function obliczOdlegloscPunktow(x1, y1, x2, y2) {
+            let d = Math.sqrt(((x2 - x1)**2) + ((y2 - y1)**2));
+            document.write(`Odległość punktu (${x1}, ${y1}) od punktu (${x2}, ${y2}) wynosi: ${d.toFixed(2)} <hr>`);
+        }
+
+        obliczOdlegloscPunktow(1, 2, 3, 4);
+
+        // ZAD. 3
+        function przywitajSie(imie = 'nieznajomy', wiek = 'nieznany', miasto = 'nieznane') {
+            document.write(`Cześć, mam na imię ${imie}, mam ${wiek} lat i mieszkam w ${miasto} <hr>`);
+        }
+
+        przywitajSie('Anna', 25, 'Warszawa');
+        przywitajSie('Bartek');
+        przywitajSie('Bartek', undefined, 'Warszawa');
+
+        // ZAD. 4
+        function sredniaLiczb(...liczby) {
+            let prawidlowe = [];
+
+            for (let liczba of liczby) {
+                if (typeof(liczba) === 'number') {
+                    prawidlowe.push(liczba);
+                }
+            }
+
+            let srednia = prawidlowe.reduce((suma, wartosc) => suma + wartosc, 0) / prawidlowe.length;
+
+            return srednia;
+
+        }
+
+        document.write(`Średnia arytmetyczna liczb poprawnych: ${sredniaLiczb(1, 2, 3, 4)}`);
+    </script>
+</head>
+<body>
+    <p id="result"></p>
+</body>
+</html>
