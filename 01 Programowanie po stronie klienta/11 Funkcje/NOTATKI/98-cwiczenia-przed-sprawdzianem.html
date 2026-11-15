@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>FUNKCJE - strzałkowa</title>
+    <script defer>
+        // // zad 1
+        // function wizytowka() {
+        //     document.write("Krzysztof Januszewski, 4F<br>");
+        // }
+
+        // wizytowka();
+        // wizytowka();
+
+        // document.write(typeof(wizytowka) + "<br>");
+
+        // let wynik = wizytowka();
+
+        // document.write(wynik());
+
+
+
+        // // zad 2
+        // function dodaj(a, b) {
+        //     return a + b;
+        // }
+
+        // let wynik = dodaj(4, 6);
+
+        // document.write(wynik + '<br>');
+
+        // document.write((wynik * 3) + '<br>');
+
+        // document.write(dodaj(dodaj(1, 2), 4) + '<br>');
+
+
+
+        // // zad 3
+        // const opisUcznia = function(imie, nazwisko, klasa) {
+        //     return `${imie} ${nazwisko} - uczeń klasy ${klasa}<br>`;
+        // }
+
+        // const opis = opisUcznia;
+
+        // document.write(opisUcznia("Jan", "Nowak", "4F"));
+        // document.write(opis("Jan", "Nowak", "4F"));
+
+
+
+        // // zad 4
+        // const greet = (name) => `Hello, ${name}!`;
+        // document.write(greet('Krzysiek') + '<br>');
+
+        // const fortyTwo = () => `42`;
+        // document.write(fortyTwo() + '<br>');
+
+        // const multiply = (x, y) => x * y;
+        // document.write(multiply(5, 2) + '<br>');
+
+        // const kwadrat = (x) => x ** 2;
+        // document.write(kwadrat(5) + '<br>');
+
+        // const czyDodatnia = (x) => {
+        //     if (x > 0) {
+        //         return true;
+        //     } else {
+        //         return false;
+        //     }
+        // };
+        // document.write(czyDodatnia(5) + '<br>');
+
+        // const utworzUcznia = (imie, klasa) => ({ imie, klasa });
+        // const uczen = utworzUcznia('Kuba', '3F');
+        // document.write(uczen.imie + ' ' + uczen.klasa + '<br>');
+
+
+
+        // // zad 5
+        // function przywitajSie(imie = 'nieznajomy', powitanie = 'Witaj', znak = '!') {
+        //     return `${powitanie}, ${imie}${znak}`;
+        // }
+
+        // document.write(przywitajSie('Krzysiek') + "<br>");
+
+        // document.write(przywitajSie('Krzysiek', 'Siemano') + "<br>");
+
+        // document.write(przywitajSie('Krzysiek', undefined, '!') + "<br>");
+
+        // document.write(przywitajSie(undefined, 'Siemano') + "<br>");
+
+        // document.write(przywitajSie('', 'Siemano') + "<br>");
+
+
+
+        // // zad 6
+        // function poleProstokata(a, b = a) {
+        //     return a * b;
+        // }
+
+        // document.write(poleProstokata(5) + "<br>");
+
+        // document.write(poleProstokata(5, 10) + "<br>");
+
+
+
+
+        // // zad 7
+        // function prostokat(a, b) {
+        //     if (a <= 0 || b <= 0 || isNaN(a) || isNaN(b)) {
+        //         return null;
+        //     } else {
+        //         return {a: a, b: b, pole: a * b, obwod: 2 * a + 2 * b};
+        //     }
+        // }
+
+        // let prostokat1 = prostokat(3, 4);
+
+        // if (prostokat1 === null) {
+        //     document.write('Wprowadzono błędne dane');
+        // } else {
+        //     document.write(`Prostokąt o wymiarach a=${prostokat1.a}, b=${prostokat1.b} ma pole ${prostokat1.pole} oraz obwód ${prostokat1.obwod}.`);
+        // }
+
+
+
+        // zad 8
+        // skipuje bo ogarniam chyba
+
+        // zad 9
+        // skipuje bo ogarniam chyba
+
+        // zad 10
+        // skipuje bo arguments sie juz nie wykorzystuje
+
+
+
+        // // zad 11
+        // let sumaRest = (...dane) => {
+        //     return dane.reduce((acc, cur) => acc + cur, 0);
+        // }
+
+        // document.write(sumaRest(1, 2, 3, 4));
+
+
+
+        // // zad 12
+        // function przelicz(mnoznik = 1, ...liczby) {
+        //     return liczby.map(liczba => liczba * mnoznik);
+        // }
+
+        // document.write(przelicz(3, 2, 3));
+
+
+
+        // zad 13
+        function sredniaLiczb(...liczby) {
+            let prawidlowe = [];
+
+            for (const liczba of liczby) {
+                if (!isNaN(liczba) && typeof(liczba) === "number") {
+                    prawidlowe.push(liczba);
+                } else {
+                    continue;
+                }
+            }
+
+            return prawidlowe.reduce((acc, cur) => acc + cur, 0);
+        }
+
+        document.write(sredniaLiczb(1, 2, 3, 4, NaN, true, 5));
+
+    </script>
+</head>
+
+<body>
+    <p id="result"></p>
+</body>
+
+</html>
