@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Radio buttony - temperatura</title>
+    <style>
+        body {
+            background-color: rgb(51, 51, 51);
+            color: white;
+            font-family: sans-serif;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Przeliczanie temperatur</h1>
+    <form method="post">
+        <label>
+            Temp. C
+            <input id="tempC" type="number">
+        </label>
+        <br><br>
+
+        <fieldset>
+            <legend>Dokonaj wyboru</legend>
+
+            <label>
+                <input type="radio" name="jednostka" value="F">
+                Fahrenheita
+            </label>
+            <br>
+            <label>
+                <input type="radio" name="jednostka" value="K">
+                Kelvina
+            </label>
+            <br>
+            <label>
+                <input type="radio" name="jednostka" value="FK">
+                Fahrenheita + Kelvina
+            </label>
+        </fieldset>
+
+        <br><input type="button" value="Przelicz" onclick="przelicz()">
+    </form>
+
+    <p id="wynik"></p>
+
+    <script async>
+        function przelicz() {
+            console.log('Przycisk działa');
+
+            const tempC = Number(document.getElementById('tempC').value);
+
+            const wybor = document.querySelector('input[name=jednostka]:checked').value;
+
+            if (wybor == null) {
+                alert('Wybierz opcję');
+                return;
+            }
+
+            console.log(wybor);
+        }
+    </script>
+</body>
+
+</html>
