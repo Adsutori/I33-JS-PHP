@@ -3,8 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <title>Obliczenia dla walca eliptycznego</title>
+
+    <script async>
+        const polosA = Number(document.getElementById('polosA').value);
+        const polosB = Number(document.getElementById('polosB').value);
+        const wysokosc = Number(document.getElementById('wysokosc').value);
+
+        console.log(polosA, polosB, wysokosc);
+    </script>
 </head>
 <body>
     <img src="PDF/wzory_walec_eliptyczny.png" alt="Walec eliptyczny wzory" style="height: 300px;">
+
+    <form method="post">
+        <label>
+            Półoś a
+            <input type="number" value="3" id="polosA"><br><br>
+        </label>
+        <label>
+            Półoś b
+            <input type="number" value="2" id="polosB"><br><br>
+        </label>
+        <label>
+            Wysokość walca
+            <input type="number" value="5" id="wysokosc"><br><br>
+        </label>
+
+        <fieldset>
+            <legend>Wybór obliczeń</legend>
+
+            <label>
+                <input type="radio" name="wybor" value="Pp" id="wyborPp">
+                Pole jednej podstawy <br>
+            </label>
+            <label>
+                <input type="radio" name="wybor" value="V" id="wyborV">
+                Objętość walca <br>
+            </label>
+            <label>
+                <input type="radio" name="wybor" value="PbV" id="wyborPbV">
+                Pole jednej podstawy <br>
+            </label>
+        </fieldset>
+
+        <br><input type="button" id="Oblicz" value="Oblicz">
+    </form>
+
+    <p id="wynik"></p>
 </body>
 </html>
