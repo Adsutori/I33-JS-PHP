@@ -60,9 +60,30 @@
                 return;
             }
 
-            console.log(wybor);
+            console.log(`wybor: ${wybor}`);
+ 
+            //2. interpretacja wyboru, obliczenia, komunikat
+
+            let komunikat;
+            const F = tempC * 9/5 + 32;
+            const K = tempC + 273.15;
+
+            switch(wybor){
+                case 'F':
+                    komunikat = `Temperatura w skali Celsjusza ${tempC} wynosi w skali Fahrenheita ${F}`;
+                    break;
+                case 'K':
+                    komunikat = `Temperatura w skali Celsjusza ${tempC} wynosi w skali Kelvina ${K}`;
+                    break;
+                case 'FK':
+                    komunikat = `Temperatura w skali Celsjusza ${tempC} wynosi w skali Fahrenheita ${F} i wynosi w skali Kelvina ${K}`;
+            }
+
+            document.getElementById('wynik').textContent = komunikat;
         }
     </script>
+ 
+    </form>
 </body>
-
+ 
 </html>
