@@ -9,6 +9,28 @@
         const polosB = Number(document.getElementById('polosB').value);
         const wysokosc = Number(document.getElementById('wysokosc').value);
 
+        const wybor = document.querySelector('input[name=wybor]:checked').value;
+
+        let komunikat;
+
+        let Pp = Math.PI * polosA * polosB;
+        let V = Math.PI * polosA * polosB * wysokosc;
+        let O = Math.PI * (3*(polosA + polosB) - Math.sqrt((3 * polosA + polosB) * (polosA + 3 * polosB)));
+        let Pb = O * wysokosc;
+
+        switch(wybor){
+            case 'Pp':
+                komunikat = `Temperatura w skali Celsjusza ${tempC} wynosi w skali Fahrenheita ${F}`;
+                break;
+            case 'V':
+                komunikat = `Temperatura w skali Celsjusza ${tempC} wynosi w skali Kelvina ${K}`;
+                break;
+            case 'PbV':
+                komunikat = `Temperatura w skali Celsjusza ${tempC} wynosi w skali Fahrenheita ${F} i wynosi w skali Kelvina ${K}`;
+        }
+
+        document.getElementById('wynik').textContent = komunikat;
+
         console.log(polosA, polosB, wysokosc);
     </script>
 </head>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Przykład z checkboxami</title>
+</head>
+
+<body>
+
+    <form>
+        <label>
+            <input class="gr1" id="cbOpcja1" type="checkbox" value="100">
+            opcja 1
+        </label>
+        <br>
+
+        <label>
+            <input class="gr1" id="cbOpcja2" type="checkbox" value="20">
+            opcja 2
+        </label>
+        <br>
+
+        <label>
+            <input class="gr1" id="cbOpcja3" type="checkbox" value="3">
+            opcja 3
+        </label>
+        <hr>
+
+        <label>
+            <input type="checkbox" id="cbRegulamin">
+            Akceptuję regulamin
+        </label>
+
+        <br>
+        <input id="sprawdz" type="button" value="sprawdz..." onclick="sprawdz()" disabled>
+    </form>
+
+    <p id="komunikat"></p>
+
+    <script async>
+        function sprawdz() {
+            // SPOSÓB I
+
+            // const czyZaznaczonoOpcja1 = document.getElementById('cbOpcja1').checked;
+            // console.log(`czy opcja 1 jest zaznaczona: ${czyZaznaczonoOpcja1}`);
+
+            // const czyZaznaczonoOpcja2 = document.getElementById('cbOpcja2').checked;
+            // console.log(`czy opcja 2 jest zaznaczona: ${czyZaznaczonoOpcja2}`);
+
+            // const czyZaznaczonoOpcja3 = document.getElementById('cbOpcja3').checked;
+            // console.log(`czy opcja 2 jest zaznaczona: ${czyZaznaczonoOpcja3}`);
+
+            // let licznik = 0;
+            // let suma = 0;
+
+            // // niezalezne ify 
+
+            // if (czyZaznaczonoOpcja1) {
+            //     licznik++;
+            //     suma += Number(document.getElementById('cbOpcja1').value);
+            // }
+
+            // if (czyZaznaczonoOpcja2) {
+            //     licznik++;
+            //     suma += Number(document.getElementById('cbOpcja2').value);
+            // }
+
+            // if (czyZaznaczonoOpcja3) {
+            //     licznik++;
+            //     suma += Number(document.getElementById('cbOpcja3').value);
+            // }
+
+            // document.getElementById('komunikat').textContent = `Zaznaczono opcji: ${licznik}. Suma: ${suma}`;
+
+
+
+            // SPOSÓB II 
+
+            // const pierwszyZaznaczonyCheckbox = document.querySelector('input[type=checkbox]:checked');
+
+            // if (pierwszyZaznaczonyCheckbox == null) {
+            //     alert('Nie zaznaczono żadnej opcji');
+            //     return;
+            // }
+
+            // console.log(`Który to element: ${pierwszyZaznaczonyCheckbox.id}`);
+
+            // const wszystkieZaznaczoneElementy = document.querySelectorAll('input[type=checkbox]:checked');
+
+            // console.log(`Ile elementów zaznaczono: ${wszystkieZaznaczoneElementy.length}`);
+
+            // let suma = 0;
+
+            // wszystkieZaznaczoneElementy.forEach(element => {
+            //     console.log(element.id);
+            //     suma += Number(element.value);
+            // });
+
+            // document.getElementById('komunikat').textContent = `Ilość zaznaczonych elementów: ${wszystkieZaznaczoneElementy.length}. Suma: ${suma}`;
+
+
+
+
+            // SPOSÓB III
+            
+            const wszystkieZaznaczoneElementy = document.querySelectorAll('input[class=gr1]:checked');
+
+            console.log(`Ile elementów zaznaczono: ${wszystkieZaznaczoneElementy.length}`);
+
+            let suma = 0;
+
+            wszystkieZaznaczoneElementy.forEach(element => {
+                console.log(element.id);
+                suma += Number(element.value);
+            });
+
+            document.getElementById('komunikat').textContent = `Ilość zaznaczonych elementów: ${wszystkieZaznaczoneElementy.length}. Suma: ${suma}`;
+        }
+
+
+        
+        const regulamin = document.getElementById('cbRegulamin');
+
+        const przyciskSprawdz = document.getElementById('sprawdz');
+
+        regulamin.addEventListener('change', function() {
+            przyciskSprawdz.disabled = !regulamin.checked;
+        });
+    </script>
+
+</body>
+
+</html>

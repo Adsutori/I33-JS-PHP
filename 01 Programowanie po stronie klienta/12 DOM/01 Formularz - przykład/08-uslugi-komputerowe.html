@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Konfigurator usług komputerowych</title>
+    <style>
+        /* body {
+            color: white;
+            background-color: rgb(56, 56, 56);
+            font-family: sans-serif;
+        }
+        .usluga {
+            border: 1px, solid, white;
+            border-radius: 10px;
+        } */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 30px 15px;
+            font-family: Arial, sans-serif;
+            color: #e5e7eb;
+            background-color: #111827;
+        }
+
+        form {
+            max-width: 450px;
+            margin: 0 auto;
+            padding: 25px;
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            max-width: 450px;
+            margin: 0 auto 8px;
+            color: #f9fafb;
+            font-size: 25px;
+        }
+
+        body > p {
+            max-width: 450px;
+            margin: 0 auto 20px;
+            color: #9ca3af;
+            font-size: 14px;
+        }
+
+        h3 {
+            margin: 15px 0 12px;
+            color: #c7d2fe;
+            font-size: 14px;
+        }
+
+        .usluga {
+            display: block;
+            margin-bottom: 8px;
+            padding: 13px;
+            color: #e5e7eb;
+            background-color: #273449;
+            border: 1px solid #3b475b;
+            border-radius: 8px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .usluga:hover {
+            background-color: #334155;
+            border-color: #6366f1;
+        }
+
+        input[type="checkbox"] {
+            accent-color: #6366f1;
+            cursor: pointer;
+        }
+
+        form p {
+            color: #9ca3af;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        #regulamin {
+            margin-right: 6px;
+        }
+
+        #oblicz {
+            width: 100%;
+            padding: 12px;
+            margin-top: 12px;
+            color: white;
+            background-color: #4f46e5;
+            border: none;
+            border-radius: 7px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        #oblicz:hover:not(:disabled) {
+            background-color: #6366f1;
+        }
+
+        #oblicz:disabled {
+            background-color: #374151;
+            color: #9ca3af;
+            cursor: not-allowed;
+        }
+
+        #wynik {
+            max-width: 450px;
+            margin: 15px auto;
+            padding: 15px;
+            color: #e5e7eb;
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 8px;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>Usługi komputerowe</h1>
+    <p>Wybierz usługi i sprawdź cenę zamówienia</p>
+
+    <form method="post">
+        <label>
+            <h3>Dostępne usługi</h3>
+        </label>
+
+        <label class="usluga">
+            <input class="opcja" type="checkbox" value="50" id="czyszczenieKomputera">
+            Czyszczenie komputera - 50 zł
+        </label><br>
+        <label class="usluga">
+            <input class="opcja" type="checkbox" value="120" id="instalacjaSystemu">
+            Instalacja systemu - 120 zł
+        </label><br>
+        <label class="usluga">
+            <input class="opcja" type="checkbox" value="40" id="instalacjaProgramuAntywirusowego">
+            Instalacja programu antywirusowego - 40 zł
+        </label><br>
+        <label class="usluga">
+            <input class="opcja" type="checkbox" value="60" id="wykonanieKopiiZapasowej">
+            Wykonanie kopii zapasowej - 60 zł
+        </label><br>
+
+        <label>
+            <h3>Regulamin</h3>
+            <p>Cena zamówienia jest sumą cen wybranych usług. Realizacja zamówienia wymaga aakceptowania.</p>
+        </label>
+
+        <label>
+            <input type="checkbox" id="regulamin">
+            Akceptuję regulamin
+        </label><br><br>
+
+        <input type="button" id="oblicz" value="Oblicz cenę" disabled>
+
+    </form>
+
+    <p id="wynik"></p>
+
+    <script>
+        function obliczCene() {
+            let wynik = document.getElementById('wynik');
+
+            const zaznaczoneOpcje = document.querySelectorAll('input[class=opcja]:checked');
+
+            if (zaznaczoneOpcje.length === 0) {
+                wynik.innerHTML = `Nie wybrano żadnej usługi. Zaznacz przynajmniej jedną usługę`;
+            } else {
+                let suma = 0;
+
+                zaznaczoneOpcje.forEach(element => {
+                    suma += Number(element.value);
+                });
+
+                wynik.innerHTML = `Liczba wybranych usług: ${zaznaczoneOpcje.length} <br> Łączna cena: ${suma.toFixed(2)} zł`;
+            }
+        }
+
+        const regulaminBtn = document.getElementById('regulamin');
+        const obliczBtn = document.getElementById('oblicz');
+
+        regulaminBtn.addEventListener('change', function () {
+            obliczBtn.disabled = !regulaminBtn.checked;
+        });
+
+        obliczBtn.addEventListener('click', obliczCene);
+    </script>
+</body>
+
+</html>
